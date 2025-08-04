@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Prachi's Resume Q&A</title>
+    </head>
+    <body>
+        <h3>Ask me about Prachi's experience!</h3>
+        <input type=""text" id=""question" placeholder="Ask me anything about my resume..."/>
+        <button onclick=""ask()">Ask</button>"
+        <div id=""answer"></div>
+
+        <script>
+            async function ask() {
+                const q = document.getElemtnbyId('question').value;
+                const res = await fetch("https://resume-agent.onrender.com/ask", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({question: q})
+                });
+                const data = await res.json();
+                document.getElementById('answer').innerText = data.answer;
+            }
+        </script>
+    </body>
+</html>
