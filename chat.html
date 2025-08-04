@@ -1,19 +1,46 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>Prachi's Resume Q&A</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+                max-width: 400px;
+                margin: auto;
+            }
+            #question {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+            }
+            #askBtn {
+                padding: 8px 16px;
+                cursor: pointer;
+            }
+            #answer {
+                margin-top: 15px;
+                padding: 10px;
+                border: 1px solid #ddd;
+                min-height: 50px;
+            }
+        </style>
     </head>
     <body>
         <h3>Ask me about Prachi's experience!</h3>
         <input type=""text" id=""question" placeholder="Ask me anything about my resume..."/>
-        <button onclick=""ask()">Ask</button>"
+        <button id="askBtn">Ask</button>
         <div id=""answer"></div>
 
         <script>
-            async function ask() {
-                const q = document.getElementById('question').value;
-                try {
-                    const res = await fetch("https://resume-agent.onrender.com/ask", {
+            window.onload = function() {
+                const btn = document.getElementById('askBtn');
+                btn.addEventListener('click', async function() {
+                    const q = document.getElemtnbyId('question').value;
+                    document.getElementById('answer').innerText = "Thinking...";
+                    try {
+                        const res = await fetch("https://resume-agent-833q.onrender.com/ask", {
                         method: "POST",
                         headers: {"Content-Type": "application/json"},
                         body: JSON.stringify({question: q})
@@ -24,7 +51,8 @@
                 } catch (e) {
                     document.getElementById('answer').innerText = "Error: " + e.message;
                 }
-            }
+            });
+        };
         </script>
     </body>
 </html>
