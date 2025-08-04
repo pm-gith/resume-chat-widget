@@ -41,7 +41,7 @@
             window.onload = function() {
                 const btn = document.getElementById('askBtn');
                 btn.addEventListener('click', async function() {
-                    const q = document.getElemtnbyId('question').value;
+                    const q = document.getElementById('question').value;
                     document.getElementById('answer').innerText = "Thinking...";
                     try {
                         const res = await fetch("https://resume-agent-833q.onrender.com/ask", {
