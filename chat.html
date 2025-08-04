@@ -34,6 +34,10 @@
         <div id=""answer"></div>
 
         <script>
+            // Debug: confirm script is loaded
+            console.log("Chat widget script loaded");
+
+            //Wait for page load
             window.onload = function() {
                 const btn = document.getElementById('askBtn');
                 btn.addEventListener('click', async function() {
