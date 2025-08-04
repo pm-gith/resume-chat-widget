@@ -12,7 +12,7 @@
         <script>
             async function ask() {
                 const q = document.getElemtnbyId('question').value;
-                const res = await fetch("https://resume-agent.onrender.com/ask", {
+                const res = await fetch("https://resume-agent-833q.onrender.com/ask", {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({question: q})
