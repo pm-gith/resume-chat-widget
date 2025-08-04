@@ -56,6 +56,12 @@
                     if (!res.ok) throw new Error("HTTP " + res.status);
                     const data = await res.json();
                     document.getElementById('answer').innerText = data.answer || data.error || "No response";
+
+                    // Hide the wake-up note after first successful response
+                    if (!note.classList.contains('hidden')) {
+                        note.classList.add('hidden');
+                    }
+                        
                 } catch (e) {
                     document.getElementById('answer').innerText = "Error: " + e.message;
                 }
