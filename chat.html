@@ -29,6 +29,9 @@
     </head>
     <body>
         <h3>Ask me about Prachi's experience!</h3>
+        <div id="note">
+            Psst... I might be stretching after a nap — give me ~30 sec to wake up!
+        </div>
         <input type="text" id="question" placeholder="Ask me anything about my resume..."/>
         <button id="askBtn">Ask</button>
         <div id="answer"></div>
@@ -40,6 +43,7 @@
             //Wait for page load
             window.onload = function() {
                 const btn = document.getElementById('askBtn');
+                const note = document.getElementById('note');
                 btn.addEventListener('click', async function() {
                     const q = document.getElementById('question').value;
                     document.getElementById('answer').innerText = "Thinking...";
