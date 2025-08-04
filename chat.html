@@ -11,14 +11,19 @@
 
         <script>
             async function ask() {
-                const q = document.getElemtnbyId('question').value;
-                const res = await fetch("https://resume-agent-833q.onrender.com/ask", {
-                    method: "POST",
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({question: q})
-                });
-                const data = await res.json();
-                document.getElementById('answer').innerText = data.answer;
+                const q = document.getElementById('question').value;
+                try {
+                    const res = await fetch("https://resume-agent.onrender.com/ask", {
+                        method: "POST",
+                        headers: {"Content-Type": "application/json"},
+                        body: JSON.stringify({question: q})
+                    });
+                    if (!res.ok) throw new Error("HTTP " + res.status);
+                    const data = await res.json();
+                    document.getElementById('answer').innerText = data.answer || data.error || "No response";
+                } catch (e) {
+                    document.getElementById('answer').innerText = "Error: " + e.message;
+                }
             }
         </script>
     </body>
